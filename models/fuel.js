@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Fuel.init({
-    name: DataTypes.STRING,
-    fuel: {
+    brand: DataTypes.STRING,
+    gas: {
       type: DataTypes.ENUM('87', '89', '93'),
       defaultValue: '87'
     },
-    catId: {
+    carId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       onDelete: 'CASCADE',
