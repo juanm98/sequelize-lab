@@ -11,7 +11,9 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const cars = await Car.findAll()
+    const cars = await Car.findAll({
+      include: [{model: Fuel, as: 'fuels'}]
+    })
     res.status(200).json(cars)
   } catch (error) {
     res.status(500).json(error)
