@@ -40,11 +40,9 @@ const update = async (req, res) => {
 
 const deleteCar = async (req, res) => {
   try {
-    // Calling destroy on the model will not return the deleted record!
-    const numberOfRowsRemoved = await Car.destroy(
-      { where: { id: req.params.id } }
-    )
-    res.status(200).json(numberOfRowsRemoved) // Expected: 1
+    const car = await Car.findByPk(req.params.id)
+    await car.destroy()
+    res.status(200).json(car)
   } catch (error) {
     res.status(500).json(error)
   }
