@@ -29,10 +29,9 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const car = await Car.update(
-      req.body,
-      { where: { id: req.params.id }, returning: true }
-    )
+    const car = await Car.findByPk(req.params.id)
+    car.set(req.body)
+    await car.save()
     res.status(200).json(car)
   } catch (error) {
     res.status(500).json(error)
