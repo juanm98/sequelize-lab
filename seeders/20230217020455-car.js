@@ -21,6 +21,5 @@ module.exports = {
     // Commands to revert seed
     
     await queryInterface.bulkDelete('Cars', null, {})
-
   }
 };
